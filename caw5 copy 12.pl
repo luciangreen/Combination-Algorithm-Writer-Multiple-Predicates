@@ -272,7 +272,7 @@ rule(RuleName,NumInputs0,NumOutputs0,InputVars2,InputVars4,VarList,VarList2,Outp
 ), %% InputVars5->InputVars2
 %%writeln([rule(RuleName,NumInputs,NumOutputs,InputVars1,InputVars3,VarList,VarList2,Rule)]),
 	%%writeln(not(member(Rule,Program1))),
-	not(member(Rule,Program1)), %% Need to stop repats of arity 1 calls
+	not(member(Rule,Program1)), %% Need to stop repeats of arity 1 calls
 	append(Program1,[Rule],Program3),
 %%writeln([inputVars3,InputVars3]),
 %%InputVars2=InputVars3,
@@ -328,7 +328,7 @@ limit_reached(New_rule_number,MaxPredicates,Rules0,PredicateName,InputVars1,Outp
 	length(InputVars1,InputVars1L), %% Added these 2 lines **** check
 	length(OutputVars,OutputVarsL),
 		((member([[n,PredicateName],InputVars1L,OutputVarsL],Rules0))->Rules1=Rules0;append(Rules0,[[predicatename_existing,InputVars1L,OutputVarsL]],Rules1)).
-%%ppend(Rules,[[predicatename_existing,InputVars1L,OutputVarsL]%%%%,[other_existing,_,_]
+%%append(Rules,[[predicatename_existing,InputVars1L,OutputVarsL]%%%%,[other_existing,_,_]
 %%],Rules1),!.
 
 /**
