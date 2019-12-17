@@ -30,9 +30,7 @@ Example Output
 
 [cawptest,3,passed]
 
-[cawptest,4,passed]
-
-N = S, S = 2.
+N = S, S = 3.
 ```
 
 
