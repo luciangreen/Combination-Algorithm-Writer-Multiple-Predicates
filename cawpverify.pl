@@ -2,7 +2,7 @@
 %% cawptest(Debug[on/off],Total,Score).
 
 cawptest(Debug,NTotal,Score) :- cawptest(Debug,0,NTotal,0,Score),!.
-cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=4, !.
+cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=3, !.
 cawptest(Debug,NTotal1,NTotal2,Score1,Score2) :-
 	NTotal3 is NTotal1+1,
 	cawptest2(NTotal3,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1),
@@ -37,10 +37,6 @@ cawptest2(2,add,[[[n,[]],1,0],[[n,"_"],1,0]],2,1,3,[[[[[[v,a],[]],[[v,c],[1,2]]]
 [[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]]
 ).
 
-cawptest2(3,add,[[[n,[]],1,0],[[n,"_"],1,0]],3,1,4,[[[[[[v,a],[]],[[v,c],[1,2]]],[[[v,d],[1,2]]],true]]],
-
-[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]]).
-
-cawptest2(4,add,[[[n,[]],1,0],[[n,"_"],1,0]],3,1,4,[[[[[[v,a],[]],[[v,b],1],[[v,c],[1,2]]],[[[v,d],[1,2]]],true]]],
+cawptest2(3,add,[[[n,[]],1,0],[[n,"_"],1,0]],3,1,4,[[[[[[v,a],[]],[[v,b],1],[[v,c],[1,2]]],[[[v,d],[1,2]]],true]]],
 
 [[[n,add],[[v,a],[v,b],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,"_"],[[v,a]]],[[n,"_"],[[v,b]]],[[n,=],[[v,c],[v,d]]]]]]).
