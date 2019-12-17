@@ -9,7 +9,7 @@ cawptest(Debug,NTotal1,NTotal2,Score1,Score2) :-
 	
 	%%writeln([cawptest2(NTotal3,Specifications,Program1)]),
 	(((%%writeln(caw00(Debug,function0,[],5,TotalVars,Specifications,[],Program1)),
-	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,[],Program2)
+	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,[],Program1)
 	
 	%%writeln(Program1),writeln(Program2),
 	%%Program1=Program2
