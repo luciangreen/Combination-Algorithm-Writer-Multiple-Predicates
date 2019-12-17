@@ -36,7 +36,7 @@ N = S, S = 3.
 
 # Notes on CAWMP:
 
-* Variables should be named starting with a, b, c, and so on, without any gaps.
+* Variables should be named a, b, c, and so on, without any gaps.
 * In inputted data, i.e. specifications, the above applies.
 
 
