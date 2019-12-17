@@ -40,10 +40,10 @@ N = S, S = 3.
 * In inputted data, i.e. specifications, the above applies.
 
 
-CAWMP is called with the command:	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2)
+CAWMP is called with the command:	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).
 * Debug is true for trace, false for no trace.
 * Function is the inputted name of the algorithm.
-* Rules are the commands to build the code from, e.g. [[[n,+],2,1],[[n,"_"],1,0]], which mean the "+" function has 2 inputs and one output and the "_" underscore function has one input.  See the <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md">List Prolog Interpreter Documentation</a> for more commands.
+* Rules are the commands to build the code from, e.g. [[[n,+],2,1],[[n,[]],1,0]], which mean the "+" function has 2 inputs and one output and the [] function has one input and verifies an empty list.  See the <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md">List Prolog Interpreter Documentation</a> for more commands.
 * MaxLength is the maximum number of commands per predicate.
 * MaxPredicates is the maximum number of predicates per algorithm.
 * TotalVars is the number of different variables per predicate.
