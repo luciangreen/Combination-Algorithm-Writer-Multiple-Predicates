@@ -297,7 +297,7 @@ rule(RuleName,NumInputs0,NumOutputs0,InputVars2,InputVars4,VarList,VarList2,Outp
 ), %% InputVars5->InputVars2
 %%writeln([rule(RuleName,NumInputs,NumOutputs,InputVars1,InputVars3,VarList,VarList2,Rule)]),
 	%%writeln(not(member(Rule,Program1))),
-	not(member(Rule,Program1)), %% Need to stop repats of arity 1 calls
+	not(member(Rule,Program1)), %% Need to stop repeats of arity 1 calls
 	append(Program1,[Rule],Program3),
 %%writeln([inputVars3,InputVars3]),
 %%InputVars2=InputVars3,
