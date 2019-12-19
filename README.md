@@ -46,7 +46,7 @@ with output: `Program2=[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[
 * MaxLength is the maximum number of commands per predicate.
 * MaxPredicates is the maximum number of predicates per algorithm.
 * TotalVars is the number of different variables per predicate.
-* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  `[A1,A2]` is for a predicate, where there must be at least 2 specifications per predicate, and `[[A1,A2]]` for the specifications for the algorithm, e.g. `[[[[[[v,a],1],[[v,b],1]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],true]]]`.
+* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  `[A1,A2]` is for a predicate, where there must be at least 2 specifications per predicate, and `[[A1,A2]]` for the specifications for the algorithm, e.g. `[[[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true],[[[[v,a],1],[[v,b],2]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],1]],fail],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],fail]]]`.
 * Program1 is the initial program (usually `[]`).  Planned: partial multiple predicate algorithms may be given to the algorithm to complete.
 * Program2 is the final outputted algorithm.
 * CAWMP allows shorter and shorter lists of specifications to specify algorithms as its dictionary grows.
