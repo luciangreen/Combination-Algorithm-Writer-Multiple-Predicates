@@ -36,7 +36,10 @@ N = S, S = 1.
 * In inputted data, i.e. specifications, the above applies.
 
 
-CAWMP is called with the command:	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).
+CAWMP is called with the command:	`caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).`
+e.g. `caw00(on,function3,[],2,1,4,[[[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true],[[[[v,a],1],[[v,b],2]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],1]],fail],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],fail]]],[],Program2).`
+with output: `Program2=[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,c]]]]],[[n,function3],[[v,a],[v,b],[v,c]],":-",[[[n,function1],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]].`
+
 * Debug is true for trace, false for no trace.
 * Function is the inputted name of the algorithm.
 * Rules are the commands to build the code from, e.g. `[[[n,+],2,1],[[n,[]],1,0]]`, which mean the `"+"` function has 2 inputs and one output and the `[]` function has one input and verifies an empty list.  See the <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md">List Prolog Interpreter Documentation</a> for more commands.
