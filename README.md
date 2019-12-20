@@ -1,6 +1,8 @@
 # Combination Algorithm Writer with Multiple Predicates
 
-Combination Algorithm Writer with Multiple Predicates is a SWI-Prolog algorithm that finds algorithms from given rules,  algorithm parts (from algdict.pl) and writes algorithms with multiple predicates that satisfy the given input and output.
+Combination Algorithm Writer with Multiple Predicates (CAWMP) is a SWI-Prolog algorithm that finds algorithms from given rules,  algorithm parts (from algdict.pl) and writes algorithms with multiple predicates that satisfy the given input and output.
+
+Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about CAWMP.  Please use <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawmp.bib">this citation</a> for research.
 
 # Getting Started
 
