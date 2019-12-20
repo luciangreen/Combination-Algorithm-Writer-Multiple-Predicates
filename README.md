@@ -39,8 +39,10 @@ N = S, S = 1.
 
 
 CAWMP is called with the command:	`caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).`
-e.g. `caw00(on,function3,[],2,1,4,[[[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true],[[[[v,a],1],[[v,b],2]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],1]],fail],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],fail]]],[],Program2).`
-with output: `Program2=[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,c]]]]],[[n,function3],[[v,a],[v,b],[v,c]],":-",[[[n,function1],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]].`
+e.g. `caw00(off,add0,[],2,1,3,[[[[[[v,a],1],[[v,b],2]],[],true],[[[[v,a],2],[[v,b],1]],[],true]]],[],Program2).`
+It has the output:
+`Program2=[[[n,1],[[v,a],[v,b]],":-",[[[n,+],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,1],[[v,a],[v,b]],":-",[[[n,-],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,add0],[[v,a],[v,b]],":-",[[[n,1],[[v,a],[v,c]]]]]]).
+`
 
 * Debug is true for trace, false for no trace.
 * Function is the inputted name of the algorithm.
