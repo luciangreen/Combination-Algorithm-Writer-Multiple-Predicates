@@ -11,6 +11,8 @@ cawptest(Debug,NTotal1,NTotal2,Score1,Score2) :-
 	(((%%writeln(caw00(Debug,function0,[],5,TotalVars,Specifications,[],Program1)),
 	caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,[],Program1)
 	
+	%%sort(Program1,ProgramA),
+	%%sort(Program2,ProgramA)
 	%%writeln1(Program1),writeln1(Program2)
 	%%Program1=Program2
 	))->(Score3 is Score1+1,writeln([cawptest,NTotal3,passed]));(Score3=Score1,writeln([cawptest,NTotal3,failed]))),
@@ -24,12 +26,14 @@ cawptest1(Debug,N,Passed) :-
 	%%writeln([cawptest2(N,Specifications,Program1)]),
 
 	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,[],Program1)
+	%%sort(Program1,ProgramA),
+	%%sort(Program2,ProgramA)
+
 	%%writeln(Program1),writeln(Program2)
 	%%Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 
 
-cawptest2(1,function3,[],2,1,4,[[[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true],[[[[v,a],1],[[v,b],2]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],1]],fail],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],fail]]],
+cawptest2(1,add0,[],2,1,3,[[[[[[v,a],1],[[v,b],2]],[],true],[[[[v,a],2],[[v,b],1]],[],true]]],
 
-[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,c]]]]],[[n,function3],[[v,a],[v,b],[v,c]],":-",[[[n,function1],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]]).
-
+[[[n,1],[[v,a],[v,b]],":-",[[[n,+],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,1],[[v,a],[v,b]],":-",[[[n,-],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,add0],[[v,a],[v,b]],":-",[[[n,1],[[v,a],[v,c]]]]]]).

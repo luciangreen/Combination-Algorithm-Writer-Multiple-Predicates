@@ -19,6 +19,7 @@ test(
 %% renumber vars, test in lipv, write sol, count vars in sol
 
 %%[[[n,add],3,1],[[v,a],[v,b],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,"_"],[[v,a]]],[[n,"_"],[[v,b]]],[[n,=],[[v,c],[v,d]]]]]
+/**
 [
 
 	[[[n,function1],2,1],[[v,a],[v,b],[v,c]],":-", %% Modes=2 inputs, 1 output
@@ -26,7 +27,29 @@ test(
 		[[n,+],[[v,a],[v,b],[v,c]]]
 	]
 	]
-	
+	]
+**/
+/**	[
+	     %%[[[n,add2],1,1],[[],[]]], doesn't work with eliminate unused preds
+	     [[[n,add2],1,1],[[v,a],[v,b]],":-",
+        [       [[n,=],[[v,a],[]]],
+                [[n,=],[[v,b],[]]]]],
+        [[[n,add3],1,1],[[v,a],[v,b]],":-",
+        [       [[n,tail],[[v,a],[v,b]]]]]
+]**/
+
+[        
+       %% [[[n,add0],1,0],[[v,a]],":-",
+        %%[       [[n,1],[[v,a]]]]],
+        
+        [[[n,1],1,1],[[v,a],[v,b]],":-",
+        [       [[n,+],[[v,a],1,[v,c]]],
+                [[n,=],[[v,c],[v,b]]]]],
+
+        [[[n,1],1,1],[[v,a],[v,b]],":-",
+        [       [[n,-],[[v,a],1,[v,c]]],
+                [[n,=],[[v,c],[v,b]]]]]
+]
 %%*** 2,1 in above is removed in code
 	/**
 	     [[[n,function2],2,1],[[v,a],[v,b],[v,c]],":-",
@@ -73,4 +96,4 @@ test(
 		  [[[n,noun1],2,0],"->",["a",[[n,noun1]]]]
 		  **/
 		  
-]).
+).

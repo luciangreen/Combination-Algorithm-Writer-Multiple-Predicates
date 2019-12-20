@@ -47,12 +47,21 @@ caw00(Debug,PredicateName,Rules1,MaxLength,MaxPredicates,TotalVars,VarLists,Prog
    assertz(furthest_rule([0,[]])),
 	%%retractall(newrulenumber(_)),
 	%%assertz(newrulenumber(0)),
-	caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,1,Program1,Program2B).%%,not(length(Program2B,1)).
+	
+	/**catch(call_with_time_limit(10, 
+		**/caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,0,Program1,Program2B)
+		
+		%%writeln1(Program2B)
+		/**),
+      time_limit_exceeded,
+      fail)
+      **/
+      .%%,not(length(Program2B,1)).
 
 %%caw01([],_Predicates,_PredicateName,_Rules3,_MaxLength,_MaxPredicates,_New_rule_number,Program,Program) :- !. %% Recently added *****	
 
-caw01([],_Predicates,_PredicateName,_Rules3,_MaxLength,_MaxPredicates,New_rule_number,Program1,_Program2) :- %%writeln1(["Error: No specification for predicate.  Program so far:",Program1,"\n\nPredicate number:",New_rule_number]),abort,!.	
-	add_furthest_rule1(New_rule_number,Program1),fail,!.
+caw01([],_Predicates,_PredicateName,_Rules3,_MaxLength,_MaxPredicates,_New_rule_number,_Program1,_Program2) :- %%writeln1(["Error: No specification for predicate.  Program so far:",Program1,"\n\nPredicate number:",New_rule_number]),abort,!.
+	fail,!.
 caw01([[]],_Predicates,_PredicateName,_Rules3,_MaxLength,_MaxPredicates,_New_rule_number,Program,Program) :- fail,!.	
 %%caw01(_VarLists,_Predicates,_PredicateName,_Rules3,_MaxLength,MaxPredicates,New_rule_number,Program,Program) :- New_rule_number=<MaxPredicates,!.	
 caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,New_rule_number,Program1,Program2B) :-
@@ -62,49 +71,47 @@ caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,New_rule_
 	%%retractall(varlists(_)),
 	%%assertz(varlists(VarLists02)),
 
-/**trace,
-	writeln1(	findall(Program2A,caw0(Predicates,PredicateName,
-	Rules3,MaxLength,MaxPredicates,
-	VarLists1,VarLists02,New_rule_number,Program1,Program2A),Program2)),
-notrace,
-**/
+%%trace,
+	%%writeln1(	findall(Program2A,caw0(Predicates,PredicateName,
+	%%Rules3,MaxLength,MaxPredicates,
+	%%VarLists1,VarLists02,New_rule_number,Program1,Program2A),Program2)),
+%%notrace,
+
 	findall(Program2A,caw0(Predicates,PredicateName,
 	Rules3,MaxLength,MaxPredicates,
 	VarLists1,VarLists02,New_rule_number,Program1,Program2A),Program2),
-/**
-trace,
 
-	writeln1(	findall(Program2A,caw0(Predicates,PredicateName,
-	Rules3,MaxLength,MaxPredicates,
-	VarLists1,VarLists02,New_rule_number,Program1,Program2A),Program2)),
-	notrace,
-**/
+%%trace,
+
+	%%writeln1(	findall(Program2A,caw0(Predicates,PredicateName,
+	%%Rules3,MaxLength,MaxPredicates,
+	%%VarLists1,VarLists02,New_rule_number,Program1,Program2A),Program2)),
+	%%notrace,
+
 %%writeln1(Program2),
 	member(Program2B,Program2),
-	/**
-	trace,
+	
+	%%trace,
 
-	writeln1(member(Program2B,Program2)),
-	notrace,
-**/
+	%%writeln1(member(Program2B,Program2)),
+	%%notrace,
+
 	
 	aggregate_all(count,(member(Item,VarLists2),
 	caw0(Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,
 	Item,VarLists02,New_rule_number,Program1,Program2B)),Count),
 	
-	/**
-	trace,
+	%%trace,
 
-	writeln1(	aggregate_all(count,(member(Item,VarLists2),
-	caw0(Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,
-	Item,VarLists02,New_rule_number,Program1,Program2B)),Count)),
-notrace,
+	%%writeln1(	aggregate_all(count,(member(Item,VarLists2),
+	%%caw0(Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,
+	%%Item,VarLists02,New_rule_number,Program1,Program2B)),Count)),
+%%notrace,
 %%writeln1(Program2),
-trace,
+%%trace,
 
-writeln1(length(VarLists2,Count)),
-notrace,
-**/
+%%writeln1(length(VarLists2,Count)),
+%%notrace,
 
 
 length(VarLists2,_Count). %%Predicates->PredicatesA x
@@ -122,7 +129,7 @@ length(VarLists2,_Count). %%Predicates->PredicatesA x
 	%%append(InputValues,OutputValues,Values),
 	Query=[[n,PredicateName],Vars2],
 	%%writeln(	caw(Algorithms,Query,PredicateName,Rules,MaxLength,MaxPredicates,Vars11,InputVars,InputVars,_,OutputVarList,OutputVars,Positivity,VarLists02,New_rule_number,Program1,Program2)),
-	caw(Algorithms,Query,PredicateName,Rules,MaxLength,MaxPredicates,Vars11,InputVars,InputVars,_,OutputVarList,OutputVars,Positivity,VarLists02,New_rule_number,Program1,Program2).
+	caw(Algorithms,Query,PredicateName,Rules,MaxLength,MaxPredicates,Vars11,InputVars,InputVars,_,OutputVarList,OutputVars,Positivity,VarLists02,New_rule_number,Program1,Program2),!.
 %%caw(_,_,_,_,_,N,_,_,_,_,_,_,_,_,N,P,P) :- fail,!. %% Turn off fail,! to have all solutions
 	/**caw(_Algorithms,_Query,_PredicateName,_Rules,_MaxLength,MaxPredicates,_Vars11,_InputVars,_InputVarsa,_InputVars2,_OutputVarList,_OutputVars,_Positivity,_VarLists02,New_rule_number,_Program1,_Program11):-
 	%%writeln(caw_here(Algorithms,Query,PredicateName,Rules,MaxLength,MaxPredicates,Vars11,InputVars,InputVars,InputVars2,OutputVarList,OutputVars,Positivity,VarLists02,New_rule_number,Program1,Program1)),
@@ -152,7 +159,7 @@ New_rule_number=<MaxPredicates,
 	%%writeln1(interpret-short(Program22)),
 
    
-   %%***everyvarmentioned(Vars2,Program5),
+   %%everyvarmentioned(Vars2,Program5),
    
    /**
    not(Program22=[
@@ -173,8 +180,9 @@ New_rule_number=<MaxPredicates,
 	%%writeln(["1*",append(Algorithms2,Program22,Program2)]), %% ***** swapped a2,p22
 	append(Algorithms2,Program22,Program2), %% ***** swapped a2,p22
 	%%length(Algorithms1,Algorithms1L),Algorithms1L=<MaxPredicates,
+%%([off,[[n,add0],[[1,2,3],[v,b]]],[[[n,add2],[[v,a],[v,b]],":-",[[[n,=],[[v,a],[]]],[[n,=],[[v,b],[]]]]],[[n,add0],[[v,a],[v,b]],":-",[[[n,add2],[[v,a],[v,c]]],[[n,add2],[[v,a],[v,d]]],[[n,=],[[v,d],[v,b]]]]]],[[[[v,b],[]]]]]=[Debug,Query,Program2,[VarLists]]->trace;true),
 
-	%%***append_last_rule(Program2),
+	%%append_last_rule(Program2),
 
 	/**
 	length(Program2,Program2L),(Program2L>=2->(%%writeln(here2),trace
@@ -182,23 +190,36 @@ New_rule_number=<MaxPredicates,
 	**/
 	debug(Debug),
 	
-	([off,[[n,function3],[1,1,[v,c]]],[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,c]]]]],[[n,function3],[[v,a],[v,b],[v,c]],":-",[[[n,function1],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]],[[[[v,c],2]]]]=[Debug,Query,Program2,[VarLists]]->true
+	%%([off,[[n,add0],[[1,2,3],[v,b]]],[[[n,add2],[[v,a],[v,b]],":-",[[[n,=],[[v,a],[]]],[[n,=],[[v,b],[]]]]],[[n,add0],[[v,a],[v,b]],":-",[[[n,add2],[[v,a],[v,c]]],[[n,add0],[[v,a],[v,d]]],[[n,=],[[v,d],[v,b]]]]]],[[[[v,b],[]]]]]=[Debug,Query,Program2,[VarLists]]->%%true
 	%%trace
-	;true),
+	%%;true),
+
+%%([off,[[n,function3],[1,1,[v,c]]],[[[n,function1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,c]]]]],[[n,function3],[[v,a],[v,b],[v,c]],":-",[[[n,function1],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]],[[[[v,c],2]]]]=[Debug,Query,Program2,[VarLists]]->true
+	%%trace
+	%%;true),
 
 	%%writeln([program2,Program2]),
 	%%writeln(["Press c."]),(get_single_char(97)->true;true),
-	%%writeln([interpret(Debug,Query,Program2,OutputVarList)]),
 	
-	%%writeln1(interpret(Debug,Query,Program2,[VarLists])),
-	%%([Debug,Query,Program2,[VarLists]]=[off,[[n,add],[[],[1,2],[v,d]]],[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]],[[[[v,d],[1,2]]]]]->trace;true),
+	 %%writeln([interpret(Debug,Query,Program2,OutputVarList)]),
+	
+ %%writeln1(interpret(Debug,Query,Program2,[VarLists])),
+	
+	
+%%([Debug,Query,Program2,[VarLists]]=[off,[[n,add],[[],[1,2],[v,d]]],[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]],[[[[v,d],[1,2]]]]]->trace;true),
+
+%%([Debug,Query,Program2,[VarLists]]=[off,[[n,add0],[[1,2,3],[v,b]]],[[[n,add2],[[v,a],[v,b]],":-",[[[n,=],[[v,a],[]]],[[n,=],[[v,b],[]]]]],[[n,add0],[[v,a],[v,b]],":-",[[[n,add2],[[v,a],[v,c]]],[[n,add2],[[v,a],[v,d]]],[[n,=],[[v,d],[v,b]]]]]],[[[[v,b],[]]]]]->trace;true),
 
 	%%interpret(Debug,Query,Program2,OutputVarList).
 	%%aggregate_all(count,(member(Item,VarLists),
 	%%varlists(VarLists02),
 	%%(
 	
-	notrace,try_interpret(Positivity,Debug,Query,Program2,VarLists),%%trace,%%writeln(here),%%trace,
+	%%notrace,
+	try_interpret(Positivity,Debug,Query,Program2,VarLists),%%trace,%%writeln(here),%%trace,
+		%%trace,
+	add_furthest_rule1(New_rule_number,Program2),
+	%%(furthest_rule(A)->writeln(furthest_rule(A));true),%%notrace,
 	!.%%-> %% *** [VarLists] ?
 	/**(VarLists03=VarLists02,
 	%%retractall(varlists(_)),
@@ -252,18 +273,21 @@ limit_reached(New_rule_number,MaxPredicates,Rules,PredicateName,InputVars1,Outpu
 	
 	%%***newbranchifcall(RuleName0,PredicateName,Itema),
 
-	member(NumInputs1,[0,1,2,3]),	 %%*** 4	
-	member(NumOutputs1,[0,1,2,3]), %%***  4
+	member(NumInputs1,[1]),%%,0,2,3]),	 %%*** 4	
+	member(NumOutputs1,[1]),%%,0,2,3]), %%***  4
 	
 	%%writeln([i,o,NumInputs1,NumOutputs1]),
 	
 	((
 	%% It could be predicatename_existing or a command from Rules
 	
-	not(RuleName0=predicatename_new_branch),not(RuleName0=other_new_branch),Algorithms2=Algorithms,%%RuleName=RuleName0,
+	not(RuleName0=predicatename_new_branch),not(RuleName0=other_new_branch),not(RuleName0=[rules_new_branch,_]),
+		%%trace,
+(RuleName0=[_,RuleName1]->RuleName2=RuleName1;RuleName2=RuleName0),
+	Algorithms2=Algorithms,%%RuleName=RuleName0,
 NumInputs=NumInputs0,NumOutputs=NumOutputs0,New_rule_number1 = New_rule_number,Rules2=Rules,
 
-rulename_if_limit(RuleName0,PredicateName,RuleName),
+rulename_if_limit(RuleName2,PredicateName,RuleName),
 	rule(RuleName,NumInputs,NumOutputs,InputVars2,InputVars4,VarList,VarList2,OutputVars,Rule))
 	->true;
 (((((RuleName0=other_new_branch, %% Command from Rules with new branch
@@ -272,9 +296,16 @@ rulename_if_limit(RuleName0,PredicateName,RuleName),
 	New_rule_number1 is New_rule_number+1,
 
 RuleName=[n,New_rule_number1],
+
 	append(Rules,[[RuleName,NumInputs1,NumOutputs1]],Rules2)
 )->true;(RuleName0=predicatename_new_branch, %% New branch with same name as current predicate
 RuleName=[n,PredicateName],
+	New_rule_number1 is New_rule_number+1,
+		append(Rules,[[RuleName,NumInputs0,NumOutputs0]],Rules2)
+
+)->true;(RuleName0=[rules_new_branch,RuleName], %% New branch with same name as current predicate
+%%trace,
+%%RuleName=[n,RuleName1],
 	New_rule_number1 is New_rule_number+1,
 		append(Rules,[[RuleName,NumInputs0,NumOutputs0]],Rules2)
 
@@ -323,10 +354,10 @@ append_last_rule(Program2):-
 	lastrule(LastRule1),
 	append_last_rule1(Program2,LastRule1).
 	
-append_last_rule1(_Program2,LastRule1) :-
-	LastRule1=[],!.
+%%append_last_rule1(_Program2,LastRule1) :-
+%%	LastRule1=[],!.
 append_last_rule1(Program2,LastRule1) :-
-	not(LastRule1=[]),
+%%	not(LastRule1=[]),
 	not(member(Program2,LastRule1)),
 	append(LastRule1,[Program2],LastRule2),
 	retractall(lastrule(_)),
@@ -335,18 +366,21 @@ append_last_rule1(Program2,LastRule1) :-
 add_furthest_rule1(New_rule_number,Program1) :-
 	furthest_rule(Rule),Rule=[Number,Rules],
 	add_furthest_rule2(New_rule_number,Number,Rules,Program1).
-add_furthest_rule2(New_rule_number,Number,_Rules,Program1) :-
+/**add_furthest_rule2(New_rule_number,Number,_Rules,Program1) :-
 	New_rule_number>Number,
 	retractall(furthest_rule(_)),
    assertz(furthest_rule([New_rule_number,[Program1]])),!.
-add_furthest_rule2(New_rule_number,Number,Rules,Program1) :-
-	New_rule_number=Number,
+   **/
+add_furthest_rule2(New_rule_number,_Number,Rules,Program1) :-
+%%trace,
+	%%New_rule_number=Number,
 	retractall(furthest_rule(_)),
-	append(Rules,[Program1],Rules2),
+	delete(Rules,Program1,Rules1),
+	append(Rules1,[Program1],Rules2),
    assertz(furthest_rule([New_rule_number,Rules2])),!.
-add_furthest_rule2(New_rule_number,Number,_Rules,_Program1) :-
+/**add_furthest_rule2(New_rule_number,Number,_Rules,_Program1) :-
 	New_rule_number<Number,!.
-
+**/
 rulename_if_limit(RuleName0,PredicateName,RuleName) :-
 	RuleName0=predicatename_existing,RuleName=[n,PredicateName],!.
 rulename_if_limit(RuleName0,_PredicateName,RuleName) :-
@@ -379,12 +413,22 @@ limit_reached(New_rule_number,MaxPredicates,Rules0,PredicateName,InputVars1,Outp
 	
 		pred_already_in_list2(PredicateName,InputVars1L,OutputVarsL,Rules0,Rules) :-
 	member([[n,PredicateName],InputVars1L,OutputVarsL],Rules0),
-	Rules=Rules0,!.
+		apply_rules_existing_and_new_branch(Rules0,Rules),!.
 			pred_already_in_list2(PredicateName,InputVars1L,OutputVarsL,Rules0,Rules) :-
 	not(member([[n,PredicateName],InputVars1L,OutputVarsL],Rules0)),
-	append(Rules0,[[predicatename_existing,InputVars1L,OutputVarsL]],Rules).
+	apply_rules_existing_and_new_branch(Rules0,Rules01),
+	append(Rules01,[[predicatename_existing,InputVars1L,OutputVarsL]],Rules).
 
+apply_rules_existing_and_new_branch(Rules1,Rules2) :-
+apply_rules_existing_and_new_branch2(Rules1,Rules3),
+apply_rules_existing_and_new_branch3(Rules1,Rules4),
+append(Rules3,Rules4,Rules2).
 
+apply_rules_existing_and_new_branch2(Rules1,Rules2) :-
+	findall([A,C1,C2],(member(B,Rules1),B=[A1,C1,C2],member(D,[rules_existing]),A=[D,A1]),Rules2).
+	
+apply_rules_existing_and_new_branch3(Rules1,Rules2) :-
+	findall([A,C1,C2],(member(B,Rules1),B=[A1,C1,C2],member(D,[rules_new_branch]),A=[D,A1]),Rules2).
 
 
 %%append(Rules,[[predicatename_existing,InputVars1L,OutputVarsL]%%%%,[other_existing,_,_]
@@ -611,8 +655,8 @@ restlast(Vars1,Rest1,Rest2,Last) :-
 rule(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule) :-
 %%writeln(rule(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule)),
 
-rule1(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule).%%->true;(writeln(stop),abort)),
-%%writeln(rule(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule)).
+rule1(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule).%%->writeln(rule(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule));true).%%(writeln(stop),abort)).
+%%.
 rule1(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule) :-
 %%writeln(rule(RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule)),
 	get_members(InModes,InputVars1,[],Vars1),
