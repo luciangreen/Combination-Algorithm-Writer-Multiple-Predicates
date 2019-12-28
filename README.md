@@ -28,7 +28,17 @@ Example Output
 ```
 [cawptest,1,passed]
 
-N = S, S = 1.
+[cawptest,2,passed]
+
+[cawptest,3,passed]
+
+[cawptest,4,passed]
+
+[cawptest,5,passed]
+
+[cawptest,6,passed]
+
+A = B, B = 6.
 ```
 
 
@@ -41,7 +51,7 @@ N = S, S = 1.
 CAWMP is called with the command:	`caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).`
 e.g. 
 ```
-caw00(off,add0,[],2,1,3,
+caw00(off,add0,[],2,1,3,[1,2],[0,1],
 [[[[[[v,a],1],[[v,b],2]],[],true],
 [[[[v,a],2],[[v,b],1]],[],true]]],
 [],Program2).
@@ -57,7 +67,8 @@ Program2=
 		[[[n,-],[[v,a],1,[v,c]]],
 		[[n,=],[[v,c],[v,b]]]]],
 	[[n,add0],[[v,a],[v,b]],":-",
-		[[[n,1],[[v,a],[v,c]]]]]
+		[[[n,1],[[v,b],[v,c]]],
+		[[n,=],[[v,a],[v,c]]]]]
 ].
 ```
 
@@ -67,7 +78,11 @@ Program2=
 * MaxLength is the maximum number of commands per predicate.
 * MaxPredicates is the maximum number of predicates per algorithm.
 * TotalVars is the number of different variables per predicate.
-* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  `[A1,A2]` is for a predicate, where there must be at least 2 specifications per predicate, and `[[A1,A2]]` for the specifications for the algorithm, e.g. `[[[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true],[[[[v,a],1],[[v,b],2]],[[[v,c],3]],true],[[[[v,a],1],[[v,b],1]],[[[v,c],1]],fail],[[[[v,a],1],[[v,b],1]],[[[v,c],3]],fail]]]`.
+* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  `[A1,A2]` is for a predicate, where there must be at least 2 specifications per predicate, and `[[A1,A2]]` for the specifications for the algorithm, e.g. 
+```
+[[[[[[v,a],1],[[v,b],2]],[],true],
+[[[[v,a],2],[[v,b],1]],[],true]]]
+```
 * Program1 is the initial program (usually `[]`).  Planned: partial multiple predicate algorithms may be given to the algorithm to complete.
 * Program2 is the final outputted algorithm.
 * CAWMP allows shorter and shorter lists of specifications to specify algorithms as its dictionary grows.
