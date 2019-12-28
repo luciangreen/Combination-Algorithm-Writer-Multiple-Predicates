@@ -48,12 +48,23 @@ A = B, B = 6.
 * In inputted data, i.e. specifications, the above applies.
 
 
-CAWMP is called with the command:	`caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,Program1,Program2).`
+CAWMP is called with the command:	`caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Specifications,AlgDict,Program1,Program2).`
 e.g. 
 ```
 caw00(off,add0,[],2,1,3,[1,2],[0,1],
+%% Specs
 [[[[[[v,a],1],[[v,b],2]],[],true],
 [[[[v,a],2],[[v,b],1]],[],true]]],
+[ %% Algorithm dictionary
+        [[[n,1],1,1],[[v,a],[v,b]],":-",
+        [       [[n,+],[[v,a],1,[v,c]]],
+                [[n,=],[[v,c],[v,b]]]]],
+
+        [[[n,1],1,1],[[v,a],[v,b]],":-",
+        [       [[n,-],[[v,a],1,[v,c]]],
+                [[n,=],[[v,c],[v,b]]]]]
+],
+
 [],Program2).
 ```
 It has the output:
