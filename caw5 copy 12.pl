@@ -33,7 +33,7 @@ Notes:
 
 **/
 
-:- include('algdict.pl').
+%%:- include('algdict.pl').
 %%:- include('remove_duplicate_predicates.pl').
 
 /**caw00a(Debug,PredicateName,Rules1,MaxLength,MaxPredicates,TotalVars,VarLists,Program1,Program2B) :-
@@ -416,7 +416,7 @@ rule(Program1,RuleName,NumInputs1,NumOutputs1,InputVars2,InputVars4,VarList,VarL
 find_rule_name(RuleName0,RuleName2) :-
 	RuleName0=[_,RuleName1],RuleName2=RuleName1.
 find_rule_name(RuleName0,RuleName2) :-
-	not(RuleName0=[_,RuleName1]),RuleName2=RuleName0.
+	not(RuleName0=[_,_RuleName1]),RuleName2=RuleName0.
 
 try_interpret(Positivity,Debug,Query,Program2,VarLists) :-
 	Positivity=true,catch(call_with_time_limit(0.05, 
