@@ -40,6 +40,13 @@ Example Output
 
 A = B, B = 6.
 ```
+Example
+`cawptest1a(off,7,S).`
+Example Output
+```
+[cawptest,7,passed]
+S = passed.
+```
 
 
 # Notes on CAWMP:

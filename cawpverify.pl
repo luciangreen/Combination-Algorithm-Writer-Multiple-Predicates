@@ -26,13 +26,13 @@ cawptest1(Debug,N,Passed) :-
 	%%writeln1([cawptest2(N,Specifications,Program1)]),
 	%%writeln1(caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2)),
 
-	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2),
+	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program1)
 	%%sort(Program1,ProgramA),
 	%%sort(Program2,ProgramA)
 
 	%%writeln(Program1),
-	writeln(Program2),
-	Program1=Program2
+	%%writeln(Program2),
+	%%Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 
 
@@ -62,7 +62,7 @@ cawptest2(1,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 [2],[1],%% Numinputs, Numoutputs tested for
 [
     [[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true]],
-    [[[[[v,a],1],[[v,b],1]],[[[v,c],2]],true]]
+    [[[[[v,a],2],[[v,b],1]],[[[v,c],3]],true]]
 ]
 ,
 [], %% Algorithm dictionary
@@ -105,62 +105,6 @@ cawptest2(2,add0,[],2,1,3,[1,2],[0,1],
 
 ]).
 
-/** Doesn't work
-%% before now, io=21
-cawptest2(3,add0,[],2,3,5,% 3 x 5
-[[[[[[v,a],1],[[v,b],2]],[],true],[[[[v,a],2],[[v,b],1]],[],true]],
-%%[[[[[v,a],1],[[v,b],2]],[],true],[[[[v,a],2],[[v,b],1]],[],true]],
-[[[[[v,a],1]],[[[v,b],2]],true]],
-[[[[[v,a],2]],[[[v,b],1]],true]]
-],
-
-[ %% Algorithm dictionary
-
-        [[[n,a2],1,1],[[v,a],[v,b]],":-",
-        [       [[n,+],[[v,a],1,[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]],
-
-        [[[n,a3],1,1],[[v,a],[v,b]],":-",
-        [       [[n,-],[[v,a],1,[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]]
-],
-**
-[exit,[[n,add0],[]]
-[exit,[[n,1],[]]
-[exit,[[n,a3],[2,1]]
-[exit,[[n,1],[]]
-[exit,[[n,a2],[1,2]]
-
-x
-
-[exit,[[n,add0],[1,2]],[exit,[[n,add0],[2,1]]
-[exit,[[n,1],[1,2]],[exit,[[n,1],[2,1]]
-[exit,[[n,a2],[1,2]]
-[exit,[[n,a3],[2,1]]
-**
-
-[ %% Result
-        [[n,a2],[[v,a],[v,b]],":-",
-        [       [[n,+],[[v,a],1,[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]],
-
-        [[n,a3],[[v,a],[v,b]],":-",
-        [       [[n,-],[[v,a],1,[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]],
-
-        [[n,add0],[[v,a],[v,b]],":-",
-        [       [[n,1],[[v,a],[v,b]]]]],
-        
-        [[n,1],[[v,a],[v,b]],":-",
-        [       [[n,a2],[[v,a],[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]],
-
-        [[n,1],[[v,a],[v,b]],":-",
-        [       [[n,a3],[[v,a],[v,c]]],
-                [[n,=],[[v,c],[v,b]]]]]
-]).
-
-**/
 %%[[[n,a2],[[v,a],[v,b]],:-,[[[n,+],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,add0],[[v,a],[v,b]],:-,[[[n,a2],[[v,a],[v,c]]]]]]
 
 
@@ -249,8 +193,8 @@ cawptest2(6,function3,[],2,1,4,[2],[1],
 	[[[n,function1],[[v,a],[v,b],[v,d]]],
 	[[n,=],[[v,d],[v,c]]]]]]).
 
-
-/** 
+/**
+%%**
 cawptest2(7,add0,[],3,3,%% it could be 5
 4,
 [1],[1],
@@ -285,9 +229,59 @@ cawptest2(7,add0,[],3,3,%% it could be 5
 	[[n,1],[[v,c],[v,d]]],
 	[[n,=],[[v,d],[v,b]]]]]]).
 
-%%[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]]
+cawptest2(7.1,add0,[],2,1,%% it could be 5
+3,
+[1],[1],
+[
+%%[[[[[v,a],[1,2]]],[[[v,b],[]]],true]],
+%%[[[[[v,a],[1,2]]],[[[v,b],[]]],true]],
+%%[[[[[v,a],[1,2]]],[[[v,b],[2]]],true]],
+%%[[[[[v,a],[2]]],[[[v,b],[]]],true]],
+[[[[[v,a],[]]],[[[v,b],[]]],true]]
+],
+[ %% Algorithm dictionary
+[[[n,add2],1,1],[[v,a],[v,b]],":-",
+	[[[n,=],[[v,a],[]]],
+	[[n,=],[[v,b],[]]]]]
+%%[[[n,add3],1,1],[[v,a],[v,b]],":-",
+%%	[[[n,tail],[[v,a],[v,b]]]]]
+],
+[ %% Result
+[[n,add2],[[v,a],[v,b]],":-",
+	[[[n,=],[[v,a],[]]],
+	[[n,=],[[v,b],[]]]]],
+[[n,add0],[[v,a],[v,b]],":-",
+	[[[n,add2],[[v,a],[v,c]]],
+	[[n,=],[[v,c],[v,b]]]]]]
+).
 
-%% Add cover all vars before returning
-**/
-
-
+cawptest2(7.2,add0,[],3,2,%% it could be 5
+3,
+[1],[1],
+[
+[[[[[v,a],[1,2]]],[[[v,b],[]]],true]],
+[[[[[v,a],[1,2]]],[[[v,b],[2]]],true]],
+[[[[[v,a],[2]]],[[[v,b],[]]],true]],
+[[[[[v,a],[]]],[[[v,b],[]]],true]]
+],
+[ %% Algorithm dictionary
+[[[n,add2],1,1],[[v,a],[v,b]],":-",
+	[[[n,=],[[v,a],[]]],
+	[[n,=],[[v,b],[]]]]],
+[[[n,add3],1,1],[[v,a],[v,b]],":-",
+	[[[n,tail],[[v,a],[v,b]]]]]
+],
+[ %% Result
+[[n,add2],[[v,a],[v,b]],":-",
+	[[[n,=],[[v,a],[]]],
+	[[n,=],[[v,b],[]]]]],
+[[n,add3],[[v,a],[v,b]],":-",
+	[[[n,tail],[[v,a],[v,b]]]]],
+[[n,add0],[[v,a],[v,b]],":-",
+	[[[n,add2],[[v,a],[v,c]]],
+	[[n,=],[[v,c],[v,b]]]]],
+[[n,add0],[[v,a],[v,b]],":-",
+	[[[n,add3],[[v,a],[v,c]]],
+	[[n,add0],[[v,c],[v,d]]],
+	[[n,=],[[v,d],[v,b]]]]]]).
+	**/

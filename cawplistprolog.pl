@@ -8,3 +8,5 @@
 %%:- include('rcawp.pl').
 %%:- include('rcaw.pl').
 :- include('texttobr2.pl').
+:- include('remove_duplicate_predicates.pl').
+:- include('cawpverifya.pl').
