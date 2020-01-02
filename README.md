@@ -38,7 +38,7 @@ Example Output
 
 [cawptest,6,passed]
 
-A = B, B = 6.
+N = S, S = 6.
 ```
 Example
 `cawptest1a(off,7,S).`
