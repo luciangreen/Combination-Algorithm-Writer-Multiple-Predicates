@@ -31,7 +31,7 @@ cawptest1(Debug,N,Passed) :-
 	%%sort(Program2,ProgramA)
 
 	%%writeln(Program1),
-	%%writeln(Program2),
+	%%writeln(Program2)
 	%%Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 
@@ -285,3 +285,27 @@ cawptest2(7.2,add0,[],3,2,%% it could be 5
 	[[n,add0],[[v,c],[v,d]]],
 	[[n,=],[[v,d],[v,b]]]]]]).
 	**/
+
+cawptest2(7,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
+]],4,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
+6,
+[2],[1],%% Numinputs, Numoutputs tested for
+[
+    [[[[[v,a],1],[[v,b],1]],[[[v,c],2],[[v,d],2]],true]]
+]
+,
+[], %% Algorithm dictionary
+/**[ %% Result
+        [[n,add0],[[v,a],[v,b],[v,c],[v,d]],":-",
+        [       [[n,+],[[v,a],[v,b],[v,e]]],
+                [[n,+],[[v,a],[v,b],[v,f]]],
+                [[n,=],[[v,c],[v,e]]],
+                [[n,=],[[v,f],[v,d]]]]]**/
+                
+        [[[n,add0],[[v,a],[v,b],[v,c],[v,d]],":-",
+                [[[n,+],[[v,a],[v,a],[v,e]]],
+                [[n,+],[[v,a],[v,b],[v,f]]],
+                [[n,=],[[v,e],[v,c]]],
+                [[n,=],[[v,e],[v,d]]]]]
+
+]).

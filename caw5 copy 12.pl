@@ -676,10 +676,19 @@ addrules(VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars2,Progr
 	append(PenultimateVars1,[Var],PenultimateVars3),
 	addrules(VarList,OutputVars1,OutputVars3,PenultimateVars3,PenultimateVars2,Program3,Program2).
 **/
+addrules(VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program2) :-
 
-addrules([],_,_,PV,PV,Program,Program) :- !.
-addrules([[v,_]],_,_,PV,PV,Program,Program) :- !.
-addrules(VarList,OutputVars1,_OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program3) :- %%*** Underscored OutputVars2
+(OutputVars1=[]->OutputVars3=[_];OutputVars3=OutputVars1),	addrules1(OutputVars3,VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program2).%%;(
+	
+addrules1([],VarList,OutputVars1,OutputVars2,PenultimateVars,PenultimateVars,Program,Program) :- !.
+addrules1(OutputVars3,VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program2) :-
+OutputVars3=[_OutputVars31|OutputVars32],
+addrules2(VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars3,Program1,Program3),
+addrules1(OutputVars32,VarList,OutputVars1,OutputVars2,PenultimateVars3,PenultimateVars2,Program3,Program2).
+
+addrules2([],_,_,PV,PV,Program,Program) :- !.
+addrules2([[v,_]],_,_,PV,PV,Program,Program) :- !.
+addrules2(VarList,OutputVars1,_OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program3) :- %%*** Underscored OutputVars2
 %%writeln1(addrules(VarList,OutputVars1,OutputVars2,PenultimateVars1,PenultimateVars2,Program1,Program3)),
 %%trace,
 	%%OutputVars2=[],%%[OutputVar|OutputVars3],
