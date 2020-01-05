@@ -2,7 +2,7 @@
 %% cawptest(Debug[on/off],Total,Score).
 
 cawptest(Debug,NTotal,Score) :- cawptest(Debug,0,NTotal,0,Score),!.
-cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=6, !.
+cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=7, !.
 cawptest(Debug,NTotal1,NTotal2,Score1,Score2) :-
 	NTotal3 is NTotal1+1,
 	cawptest2(NTotal3,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs,Numoutputs,Specifications,AlgDict,Program1),
@@ -26,13 +26,13 @@ cawptest1(Debug,N,Passed) :-
 	%%writeln1([cawptest2(N,Specifications,Program1)]),
 	%%writeln1(caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2)),
 
-	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program1)
+	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2),
 	%%sort(Program1,ProgramA),
 	%%sort(Program2,ProgramA)
 
 	%%writeln(Program1),
-	%%writeln(Program2)
-	%%Program1=Program2
+	writeln(Program2),
+	Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 
 
@@ -91,19 +91,19 @@ cawptest2(2,add0,[],2,1,3,[1,2],[0,1],
                 [[n,=],[[v,c],[v,b]]]]]
 ],
 
-[ %% Result
-	[[n,1],[[v,a],[v,b]],":-",
-		[[[n,+],[[v,a],1,[v,c]]],
-		[[n,=],[[v,c],[v,b]]]]],
-	[[n,1],[[v,a],[v,b]],":-",
-		[[[n,-],[[v,a],1,[v,c]]],
-		[[n,=],[[v,c],[v,b]]]]],
-	[[n,add0],[[v,a],[v,b]],":-",
-		[[[n,1],[[v,b],[v,c]]],
-		[[n,=],[[v,a],[v,c]]]]]
+ %% Result
 
+[[[n,1],[[v,a],[v,b]],":-",
+	[[[n,+],[[v,a],1,[v,c]]],
+	[[n,=],[[v,c],[v,b]]]]],
+[[n,1],[[v,a],[v,b]],":-",
+	[[[n,-],[[v,a],1,[v,c]]],
+	[[n,=],[[v,c],[v,b]]]]],
+[[n,add0],[[v,a],[v,b]],":-",
+	[[[n,1],[[v,a],[v,c]]],
+	[[n,=],[[v,b],[v,c]]]]]]
 
-]).
+).
 
 %%[[[n,a2],[[v,a],[v,b]],:-,[[[n,+],[[v,a],1,[v,c]]],[[n,=],[[v,c],[v,b]]]]],[[n,add0],[[v,a],[v,b]],:-,[[[n,a2],[[v,a],[v,c]]]]]]
 
@@ -287,11 +287,12 @@ cawptest2(7.2,add0,[],3,2,%% it could be 5
 	**/
 
 cawptest2(7,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
-]],4,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
+],[[n,-],2,1]],4,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
 6,
 [2],[1],%% Numinputs, Numoutputs tested for
 [
-    [[[[[v,a],1],[[v,b],1]],[[[v,c],2],[[v,d],2]],true]]
+    [[[[[v,a],1],[[v,b],1]],[[[v,c],0],[[v,d],2]],true],
+    [[[[v,a],1],[[v,b],2]],[[[v,c],1],[[v,d],3]],true]]
 ]
 ,
 [], %% Algorithm dictionary
@@ -302,10 +303,26 @@ cawptest2(7,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
                 [[n,=],[[v,c],[v,e]]],
                 [[n,=],[[v,f],[v,d]]]]]**/
                 
+       /**
         [[[n,add0],[[v,a],[v,b],[v,c],[v,d]],":-",
                 [[[n,+],[[v,a],[v,a],[v,e]]],
                 [[n,+],[[v,a],[v,b],[v,f]]],
                 [[n,=],[[v,e],[v,c]]],
                 [[n,=],[[v,e],[v,d]]]]]
+                **/
+                
+               /**
+                [[[n,add0],[[v,a],[v,b],[v,c],[v,d]],":-",
+                	[[[n,+],[[v,a],[v,b],[v,e]]],
+                	[[n,-],[[v,b],[v,a],[v,f]]],
+                	[[n,=],[[v,e],[v,d]]],
+                	[[n,=],[[v,f],[v,c]]]]]]
+**/
 
-]).
+[[[n,add0],[[v,a],[v,b],[v,c],[v,d]],":-",
+	[[[n,+],[[v,a],[v,b],[v,e]]],
+	[[n,-],[[v,b],[v,a],[v,f]]],
+	[[n,=],[[v,e],[v,d]]],
+	[[n,=],[[v,f],[v,c]]]]]]
+
+).

@@ -1,7 +1,7 @@
 %% Test individual cases, Debug=trace=on or off, N=case number, Passed=output=result
 
 cawptest1a(Debug,N,Passed) :-
-	cawptest2(N,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,Program1),
+	cawptest2a(N,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,Program1),
 	%%writeln1([cawptest2(N,Specifications,Program1)]),
 	%%writeln1(caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2)),
 
@@ -14,7 +14,7 @@ cawptest1a(Debug,N,Passed) :-
 	%%Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 	
-cawptest2(7,[add0,add0],[],[2,3],[1,1],%% it could be 5
+cawptest2a(7,[add0,add0],[],[2,3],[1,1],%% it could be 5
 [3,4], %% 4 not 3 because of bug
 [1],[1],
 [
@@ -58,7 +58,7 @@ cawptest2(7,[add0,add0],[],[2,3],[1,1],%% it could be 5
 		[[n,=],[[v,b],[]]]]],
 	[[n,add0],[[v,a],[v,b]],":-",
 		[[[n,add2],[[v,a],[v,c]]],
-		[[n,=],[[v,a],[v,b]]]]]],
+		[[n,=],[[v,c],[v,b]]]]]],
 	
 	[ %% Resulting recursive algorithm
 	
@@ -69,11 +69,13 @@ cawptest2(7,[add0,add0],[],[2,3],[1,1],%% it could be 5
 	[[[n,tail],[[v,a],[v,b]]]]],
 [[n,add0],[[v,a],[v,b]],":-",
 	[[[n,add2],[[v,a],[v,c]]],
-	[[n,=],[[v,a],[v,b]]]]],
+	[[n,=],[[v,c],[v,b]]]]],
 [[n,add0],[[v,a],[v,b]],":-",
 	[[[n,add3],[[v,a],[v,c]]],
 	[[n,add0],[[v,c],[v,d]]],
-	[[n,=],[[v,d],[v,b]]]]]]]).
+	[[n,=],[[v,d],[v,b]]]]]]]
+	
+	).
 
 
 %%[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]]

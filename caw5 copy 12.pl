@@ -158,7 +158,7 @@ caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,New_rule_
 	
 	aggregate_all(count,(member(Item,VarLists2),
 	caw0(Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,
-	Item,VarLists02,New_rule_number,Program1,Program2B,_V2)),_Count1),
+	Item,VarLists02,New_rule_number,Program1,Program2B,_V2)),Count1),
 	
 	%%trace,
 
@@ -174,7 +174,8 @@ caw01(VarLists,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,New_rule_
 
    %%(findall(EVM1,(everyvarmentioned(Vars2,Program5),
 
-length(VarLists2,_Count),
+length(VarLists2,Count2),
+Count1>=Count2,
 
 %%(Program2B=[[[n,1],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]]->true%%trace
 %%;true),
@@ -327,7 +328,7 @@ New_rule_number=<MaxPredicates,
 	%%(Program2=[[[n,add],[[v,a],[v,b],[v,c],[v,d]],":-",[[[n,=],[[v,c],[v,d]]]]]]->true%%trace
 	%%;true),
 	%%trace,
-	(everyvarmentioned(Vars2,Program5)),%%->true;(%%notrace,fail)),
+	(no_singletons(Vars2,Program5)),%%->true;(%%notrace,fail)),
  %%writeln1(interpret(Debug,Query,Program2,[VarLists])),
 
 %%(furthest_rule(A)->writeln(furthest_rule(A));true),%%notrace,
@@ -561,6 +562,7 @@ rulename_if_limit(RuleName0,PredicateName,RuleName) :-
 rulename_if_limit(RuleName0,_PredicateName,RuleName) :-
 	not(RuleName0=predicatename_existing),RuleName=RuleName0.
 
+/**
 everyvarmentioned(Vars1,Program) :-
 	everyvarmentioned1(Vars1,Program).
 	%%underscore_occurs_once_per_var(Vars1,Program).
@@ -578,6 +580,16 @@ everyvarmentioned1(Vars1,Program) :-
 	%%Vars2=true
 	)),B),not(B=[]),
 	everyvarmentioned1(Vars3,Program).
+**/
+
+no_singletons(Vars1,Program):-
+	findall(DA,(member(C,Program),C=[_E,D],member(DA,D)),Vars2),
+	%%append_list(Vars2,Vars2A),
+	append(Vars1,Vars2,Vars3),
+	findall(Count1,(member(Item,Vars3),aggregate_all(count,(member(Item,Vars3)),Count1),
+	Count1=1),G),G=[].
+
+
 
 /**
 underscore_occurs_once_per_var([],_,_Program) :- !.
