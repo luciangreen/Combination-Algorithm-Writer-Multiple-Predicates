@@ -327,8 +327,8 @@ cawptest2(7,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 
 ).
 
-
-%% Not tested nonrecursive multiclauses
+/**
+ Not tested nonrecursive multiclauses
 cawptest2(8,add0,[[[n,+],2,1],[[n,-],2,1]],2,3,4,[2],[1],
 [[[[[[v,a],1],[[v,b],1]],[[[v,b],2]],true],[[[[v,a],2],[[v,b],1]],[[[v,b],1]],true]],
 [[[[[v,a],1],[[v,b],1]],[[[v,b],2]],true]],
@@ -348,4 +348,5 @@ cawptest2(8,add0,[[[n,+],2,1],[[n,-],2,1]],2,3,4,[2],[1],
 [[n,add0],[[v,a],[v,b],[v,c]],":-",
 	[[[n,1],[[v,a],[v,b],[v,d]]],
 	[[n,=],[[v,c],[v,d]]]]]]
+**/
 ).
