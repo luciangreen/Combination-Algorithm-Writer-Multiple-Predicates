@@ -26,13 +26,13 @@ cawptest1(Debug,N,Passed) :-
 	%%writeln1([cawptest2(N,Specifications,Program1)]),
 	%%writeln1(caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2)),
 
-	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program2),
+	(((caw00(Debug,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs, Numoutputs,Specifications,AlgDict,[],Program1)
 	%%sort(Program1,ProgramA),
 	%%sort(Program2,ProgramA)
 
 	%%writeln(Program1),
-	writeln(Program2),
-	Program1=Program2
+	%%writeln(Program2),
+	%%Program1=Program2
 	))->(Passed=passed,writeln([cawptest,N,passed]));(Passed=failed,writeln([cawptest,N,failed]))),!.
 
 
@@ -325,4 +325,28 @@ cawptest2(7,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 	[[n,=],[[v,e],[v,d]]],
 	[[n,=],[[v,f],[v,c]]]]]]
 
+).
+
+/**
+ Not tested nonrecursive multiclauses
+cawptest2(8,add0,[[[n,+],2,1],[[n,-],2,1]],2,3,4,[2],[1],
+[[[[[[v,a],1],[[v,b],1]],[[[v,b],2]],true],[[[[v,a],2],[[v,b],1]],[[[v,b],1]],true]],
+[[[[[v,a],1],[[v,b],1]],[[[v,b],2]],true]],
+[[[[[v,a],2],[[v,b],1]],[[[v,b],1]],true]]],
+
+[ %% Algorithm dictionary
+],
+
+ %% Result
+
+[[[n,1],[[v,a],[v,b],[v,c]],":-",
+	[[[n,+],[[v,a],[v,b],[v,d]]],
+	[[n,=],[[v,c],[v,d]]]]],
+[[n,1],[[v,a],[v,b],[v,c]],":-",
+	[[[n,-],[[v,a],[v,b],[v,d]]],
+	[[n,=],[[v,d],[v,c]]]]],
+[[n,add0],[[v,a],[v,b],[v,c]],":-",
+	[[[n,1],[[v,a],[v,b],[v,d]]],
+	[[n,=],[[v,c],[v,d]]]]]]
+**/
 ).
