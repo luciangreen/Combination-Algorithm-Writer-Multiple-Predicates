@@ -103,7 +103,7 @@ caw00(Debug,PredicateName,Rules1,MaxLength,MaxPredicates,TotalVars,NumInputs,Num
 	/**catch(call_with_time_limit(10, 
 		**/caw01(VarLists,_,Predicates,PredicateName,Rules3,MaxLength,MaxPredicates,0,Program1,Program2B,_),
 		
-		writeln1(Program2B)
+		%%writeln1(Program2B)
 		/**),
       time_limit_exceeded,
       fail)
