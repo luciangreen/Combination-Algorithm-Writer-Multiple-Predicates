@@ -105,6 +105,10 @@ Program2=
 * Program2 is the final outputted algorithm.
 * CAWMP allows shorter and shorter lists of specifications to specify algorithms as its dictionary grows.
 
+# Not tested updates
+
+Neither Prolog nor List Prolog can return non-deterministic results after point of execution passes from a clause to a child clause, so the result of testing the repository is that multiple clauses cannot be generated in this case.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
