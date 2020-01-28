@@ -1,6 +1,6 @@
 # Documentation of List Prolog Interpreter CAWMP Commands
 
-* `[[n,[not,Operator]],[Variable1,Variable2]]` where `Operator=is` or `Operator="="` e.g. `[[n,[not,is]],[[v,a],1]]` returns true where [v,a] must be instantiated (not empty).
+* `[[n,[not,Operator]],[Variable1,Variable2]]` where `Operator=is` or `Operator="="` e.g. `[[n,[not,is]],[[v,a],1]]` returns true where `[v,a]` must be instantiated (not empty).
 
 * `[[n,[not,Operator]],[Variable1,Variable2]]` where `Operator=">"`, `Operator=">="`, `Operator="<"`, `Operator="=<"` or `Operator="=\="` e.g. `[[n,[not,>]],[3,2]]` returns false.
 
