@@ -111,7 +111,7 @@ Neither Prolog nor List Prolog can return non-deterministic results after point 
 
 # Documentation of List Prolog Interpreter CAWMP Commands
 
-See <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPCAWMP_docs.md">Data to Types Documentation</a>.
+See <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPCAWMP_docs.md">Documentation of List Prolog Interpreter CAWMP Commands</a>.
 
 # Authors
 
