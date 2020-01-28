@@ -109,6 +109,10 @@ Program2=
 
 Neither Prolog nor List Prolog can return non-deterministic results after point of execution passes from a clause to a child clause, so the result of testing the repository is that multiple clauses cannot be generated in this case.
 
+# Documentation of List Prolog Interpreter CAWMP Commands
+
+See <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/LPCAWMP_docs.md">Data to Types Documentation</a>.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
