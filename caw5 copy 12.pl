@@ -321,6 +321,8 @@ New_rule_number1=<MaxPredicates,
 	%%true),
 
 	%%writeln([program2,Program2]),
+	%%(length(Program5,4)->writeln([program2,Program2])),
+	%%(Program2=[[[n,add0],[[v,a],[v,b],[v,c],[v,d],[v,e]],":-",[[[n,+],[[v,a],[v,b],[v,f]]],[[n,+],[[v,c],[v,f],[v,g]]],[[n,+],[[v,d],[v,g],[v,h]]],[[n,=],[[v,h],[v,e]]]]]]->trace;true),
 	%%writeln(["Press c."]),(get_single_char(97)->true;true),
 	
 	 %%writeln1([interpret(Debug,Query,Program2,OutputVarList)]),
@@ -346,7 +348,11 @@ New_rule_number1=<MaxPredicates,
 	%%(Program2=[[[n,add],[[v,a],[v,b],[v,c],[v,d]],":-",[[[n,=],[[v,c],[v,d]]]]]]->true%%trace
 	%%;true),
 	%%trace,
-	(no_singletons(Vars2,Program5)),%%->true;(%%notrace,fail)),
+	(no_singletons(Vars2,Program5)),
+	
+	%%writeln1(Program2),	
+	writeln1([cawptest,passed,Program2]),abort,
+	%%->true;(%%notrace,fail)),
  %%writeln1(interpret(Debug,Query,Program2,[VarLists])),
 
 %%(furthest_rule(A)->writeln(furthest_rule(A));true),%%notrace,
@@ -682,8 +688,7 @@ apply_rules_existing_and_new_branch2(Rules1,Rules2) :-
 apply_rules_existing_and_new_branch3(Rules1,Rules2) :-
 	findall([A,C1,C2],(member(B,Rules1),B=[A1,C1,C2],member(D,[%%rules_new_branch
 	]),A=[D,A1]),Rules2).
-
-
+	
 %%append(Rules,[[predicatename_existing,InputVars1L,OutputVarsL]%%%%,[other_existing,_,_]
 %%],Rules1),!.
 

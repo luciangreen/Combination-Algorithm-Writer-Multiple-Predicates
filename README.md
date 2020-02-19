@@ -21,25 +21,15 @@ Install List Prolog Interpreter Repository (https://github.com/luciangreen/listp
 ```
 * Running
 
-Try CAWP regression tests (in <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawpverify.pl">cawpverify.pl</a>):
+* Try CAWP regression tests (in <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawpverify.pl">cawpverify.pl</a>):
 Example
-`cawptest(off,N,S).`
+`cawptest1(off,N,S).` where N is the test number 1-8.
 Example Output
 ```
-[cawptest,1,passed]
-
-[cawptest,2,passed]
-
-[cawptest,3,passed]
-
-[cawptest,4,passed]
-
-[cawptest,5,passed]
-
-[cawptest,6,passed]
-
-N = S, S = 6.
+[cawptest,passed,[[[n,add0],[[v,a],[v,b],[v,c]],":-",[[[n,+],[[v,a],[v,b],[v,d]]],[[n,=],[[v,d],[v,c]]]]]]]
 ```
+* Try CAWP regression tests (in <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawpverifya.pl">cawpverifya.pl</a>):
+
 Example
 `cawptest1a(off,7,S).`
 Example Output
