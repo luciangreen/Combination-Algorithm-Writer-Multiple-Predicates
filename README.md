@@ -38,6 +38,22 @@ Example Output
 S = passed.
 ```
 
+# Running Random Combination Algorithm Writer (RCAW)
+
+* RCAW generates random algorithms.
+
+* To load and install, follow the instructions above.
+
+* Run with the command:
+```
+caw00(off,[n,f],[[[n,append],2,1],[[n,delete],2,1],[[n,head],1,1],[[n,tail],1,1],[[n,member],1,1]],2,8,_InputVarList,_OutputVarList,[],_Program2,Ps),writeln1(Ps).
+```
+Output
+```
+[[[[n,f],[["c","b"],["c","b"],[v,d]]],[[[n,f],[[v,b],[v,a],[v,d]],":-",[[[n,=],[[v,d],[v,a]]]]]],[[[[v,d],["c","b"]]]]],
+
+[[[n,f],[["c","b"],["c","b"],[v,d]]],[[[n,f],[[v,b],[v,a],[v,d]],":-",[[[n,append],[[v,b],[v,a],[v,e]]],[[n,=],[[v,d],[v,e]]]]]],[[[[v,d],["c","b","c","b"]]]]]]
+```
 
 # Notes on CAWMP:
 
