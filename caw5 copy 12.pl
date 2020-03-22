@@ -351,7 +351,7 @@ New_rule_number1=<MaxPredicates,
 	(no_singletons(Vars2,Program5)),
 	
 	%%writeln1(Program2),	
-	writeln1([cawptest,passed,Program2]),abort,
+	%%writeln1([cawptest,passed,Program2]),abort,
 	%%->true;(%%notrace,fail)),
  %%writeln1(interpret(Debug,Query,Program2,[VarLists])),
 

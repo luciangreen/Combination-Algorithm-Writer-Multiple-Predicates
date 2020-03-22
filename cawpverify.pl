@@ -352,7 +352,7 @@ cawptest2(8,add0,[[[n,+],2,1],[[n,-],2,1]],2,3,4,[2],[1],
 ).
 **/
  
-
+/**
 
 cawptest2(8,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 ]],4,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
@@ -373,4 +373,4 @@ cawptest2(8,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 
 ).
 
-
+**/
