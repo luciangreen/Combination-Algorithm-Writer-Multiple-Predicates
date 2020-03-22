@@ -1,5 +1,7 @@
 # Combination Algorithm Writer with Multiple Predicates
 
+* NB. This repository has been deprecated by <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Stable">Combination Algorithm Writer with Predicates Stable (CAWPS)</a>.
+
 Combination Algorithm Writer with Multiple Predicates (CAWMP) is a SWI-Prolog algorithm that finds algorithms from given rules,  algorithm parts (from algdict.pl) and writes algorithms with multiple predicates that satisfy the given input and output.
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about CAWMP.  Please use <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawmp.bib">this citation</a> for research.
@@ -11,6 +13,11 @@ Please read the following instructions on how to install the project on your com
 # Prerequisites
 
 Install List Prolog Interpreter Repository (https://github.com/luciangreen/listprologinterpreter) first.
+
+
+# Installation from List Prolog Package Manager (LPPM)
+
+* Optionally, you can install from LPPM by installing <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a> for your machine, downloading the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>, loading LPPM with `['lppm'].` then installing the package by running `lppm_install("luciangreen","Combination-Algorithm-Writer-Multiple-Predicates").`.
 
 # Installing
 
