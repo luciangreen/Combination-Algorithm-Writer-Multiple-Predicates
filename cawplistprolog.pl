@@ -7,6 +7,6 @@
 :- include('cawpverify.pl').
 %%:- include('rcawp.pl').
 %%:- include('rcaw.pl').
-:- include('../Text-to-Breasonings/texttobr2.pl').
+%%:- include('../Text-to-Breasonings/texttobr2.pl').
 :- include('remove_duplicate_predicates.pl').
 :- include('cawpverifya.pl').
