@@ -122,6 +122,8 @@ Program2=
 
 Neither Prolog nor List Prolog can return non-deterministic results after point of execution passes from a clause to a child clause, so the result of testing the repository is that multiple clauses cannot be generated in this case.
 
+See the CAWPS Repository because it is all that is needed to build an algorithm bottom-up.  Without generating base cases first, neither CAWMP nor CAWPS can work, and CAWPS can generate more commands per predicate than CAWMP.
+
 # Documentation of List Prolog Interpreter CAWMP Commands
 
 See <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/LPCAWMP_docs.md">Documentation of List Prolog Interpreter CAWMP Commands</a>.
