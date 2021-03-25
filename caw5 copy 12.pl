@@ -566,12 +566,13 @@ find_rule_name(RuleName0,RuleName2) :-
 
 try_interpret(Positivity,Debug,Query,Program2,VarLists) :-
 	Positivity=true,catch(call_with_time_limit(0.05, 
-		interpret(Debug,Query,Program2,[VarLists])),
+		international_interpret([lang,"en"],Debug,Query,Program2,[VarLists])),
       time_limit_exceeded,
       fail),!.
+      
 try_interpret(Positivity,Debug,Query,Program2,VarLists) :-
 	not(Positivity=true),catch(call_with_time_limit(0.05, 
-		not(interpret(Debug,Query,Program2,[VarLists]))),
+		not(international_interpret([lang,"en"],Debug,Query,Program2,[VarLists]))),
       time_limit_exceeded,
       fail),!.
 
