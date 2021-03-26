@@ -104,7 +104,7 @@ Program2=
 * MaxLength is the maximum number of commands per predicate.
 * MaxPredicates is the maximum number of predicates per algorithm.
 * TotalVars is the number of different variables per predicate.
-* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  `[A1,A2]` is for a predicate, where there must be at least 2 specifications per predicate, and `[[A1,A2]]` for the specifications for the algorithm, e.g. 
+* Specifications have the form `A=[Input_variable_list, Output_variable_list, True (if this specification in true, or false if trying to eliminate possibilities)]`, where a variable list is `[B]` where `B` is e.g. `[[v,c],[1,2]]`.  There is a list of specifications, e.g. `[A1,A2]` for a predicate (i.e. not the whole algorithm), and `[[A1,A2],[B1,B2]]` for the specifications for the algorithm, e.g. 
 ```
 [[[[[[v,a],1],[[v,b],2]],[],true],
 [[[[v,a],2],[[v,b],1]],[],true]]]
