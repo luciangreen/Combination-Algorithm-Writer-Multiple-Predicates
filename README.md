@@ -1,6 +1,6 @@
 # Combination Algorithm Writer with Multiple Predicates
 
-* NB. This repository has been deprecated by <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Stable">Combination Algorithm Writer with Predicates Stable (CAWPS)</a>.
+* NB. This repository has been deprecated by <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Stable">Combination Algorithm Writer with Predicates Stable (CAWPS), which can return more levels of results, but this repository, CAWMP, has more features.</a>.
 
 Combination Algorithm Writer with Multiple Predicates (CAWMP) is a SWI-Prolog algorithm that finds algorithms from given rules,  algorithm parts (from algdict.pl) and writes algorithms with multiple predicates that satisfy the given input and output.
 
