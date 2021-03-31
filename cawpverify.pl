@@ -2,7 +2,7 @@
 %% cawptest(Debug[on/off],Total,Score).
 
 cawptest(Debug,NTotal,Score) :- cawptest(Debug,0,NTotal,0,Score),!.
-cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=7, !.
+cawptest(_Debug,NTotal,NTotal,Score,Score) :- NTotal=9, !.
 cawptest(Debug,NTotal1,NTotal2,Score1,Score2) :-
 	NTotal3 is NTotal1+1,
 	cawptest2(NTotal3,Function,Rules,MaxLength,MaxPredicates,TotalVars,Numinputs,Numoutputs,Specifications,AlgDict,Program1),
@@ -375,6 +375,7 @@ cawptest2(8,add0,[[[n,+],2,1%% Modes=2 inputs, 1 output
 
 **/
 
+% ["Computational English","COMPUTATIONAL ENGLISH by Lucian Green Conglish Reflection 2 of 4.txt",0,algorithms,"14.   *I prepared to serve the vegetable burger.  I did this by cooking the vegetable patty.  First, I made the patty from semolina, soy and carrot.  Second, I minced it up.  Third, I cooked it.  In this way, I prepared to serve the vegetable burger by cooking the vegetable patty."]
 
 
 cawptest2(8,append1,[[[n,append],2,1%% Modes=2 inputs, 1 output
@@ -387,8 +388,26 @@ cawptest2(8,append1,[[[n,append],2,1%% Modes=2 inputs, 1 output
 ]
 ,
 [],
-[[[n,append1],[[v,a],[v,b],[v,c],[v,d]],":-",[[[n,append],[[v,a],[v,b],[v,e]]],[[n,append],[[v,e],[v,c],[v,f]]],[[n,=],[[v,f],[v,d]]]]]]
+[[[n,append1],[[v,a],[v,b],[v,c],[v,d]],":-"	,[[[n,append],[[v,a],[v,b],[v,e]]],[[n,append],[[v,e],[v,c],[v,f]]],[[n,=],[[v,f],[v,d]]]]]]
 
 ).
     
+% ["Fundamentals of Pedagogy and Pedagogy Indicators","FUNDAMENTALS OF PEDAGOGY by Lucian Green Two Uses 23 of 30.txt",0,algorithms,"225.	ALEXIS: *The subject should write logically connected breasonings."]
 
+/**
+
+cawptest2(9,mp*,[[[n,append],2,1%% Modes=2 inputs, 1 output
+]],3,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
+7,
+[3],[1],%% Numinputs, Numoutputs tested for
+[
+	[[[[[v,a],["p1"]],[[v,b],["p1","p2"]]],
+		[[[v,c],["p2"]]],true]]
+]
+,
+[],
+[[[n,mp],[[v,a],[v,b],[v,c],[v,d]],":-"	,[[[n,append],[[v,a],[v,b],[v,e]]],[[n,append],[[v,e],[v,c],[v,f]]],[[n,=],[[v,f],[v,d]]]]]]
+
+).
+
+**/
