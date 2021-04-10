@@ -23,7 +23,7 @@
 %%:- include('texttobr2.pl').
 :- include('../listprologinterpreter/la_strings.pl').
 %:- include('../Languages/lang_db_generator.pl'). % leave off, run separately through Languages
-:- include('../listprologinterpreter/lpiverify4-fr.pl').
+%:- include('../listprologinterpreter/lpiverify4-fr.pl').
 :- include('../listprologinterpreter/operators.pl').
 :- include('../listprologinterpreter/lpiverify4_test_lang_all.pl').
 :- include('../listprologinterpreter/lpiverify4_test_bt_lang_all.pl').
