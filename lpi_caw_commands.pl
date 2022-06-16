@@ -1,40 +1,40 @@
-interpretstatement1(_F0,_Functions,[[n,[not,Operator]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,Operator]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
 	isop(Operator),
 	interpretpart(not_is,Variable1,Variable2,Vars1,Vars2),!.
 
-interpretstatement1(_F0,_Functions,[[n,[not,Operator]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,Operator]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
 	comparisonoperator(Operator),
 %%writeln1(4),
         interpretpart(not_iscomparison,Operator,Variable1,Variable2,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[not,member]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,member]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
 %%writeln1(8),
         interpretpart(not_member,Variable1,Variable2,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[not,head]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,head]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
 %%writeln1(6),
         interpretpart(not_head,Variable1,Variable2,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[not,tail]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,tail]],[Variable1,Variable2]],Vars1,Vars2,true,nocut) :-
 %%writeln1(61),
         interpretpart(not_tail,Variable1,Variable2,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[not,append]],[Variable1,Variable2,Variable3]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,append]],[Variable1,Variable2,Variable3]],Vars1,Vars2,true,nocut) :-
 %%writeln1(9),
         interpretpart(not_append,Variable1,Variable2,Variable3,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[not,stringconcat]],[Variable1,Variable2,Variable3]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[not,stringconcat]],[Variable1,Variable2,Variable3]],Vars1,Vars2,true,nocut) :-
         interpretpart(not_stringconcat,Variable1,Variable2,Variable3,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,[]],[Variable1]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,[]],[Variable1]],Vars1,Vars2,true,nocut) :-
 %%writeln1(8),
         interpretpart([],Variable1,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,""],[Variable1]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,""],[Variable1]],Vars1,Vars2,true,nocut) :-
 %%writeln1(8),
         interpretpart("",Variable1,Vars1,Vars2).
 
-interpretstatement1(_F0,_Functions,[[n,"_"],[Variable1]],Vars1,Vars2,true,nocut) :-
+interpretstatement1(ssi,_F0,_Functions,[[n,"_"],[Variable1]],Vars1,Vars2,true,nocut) :-
 %%writeln1(8),
         interpretpart("_",Variable1,Vars1,Vars2).
 

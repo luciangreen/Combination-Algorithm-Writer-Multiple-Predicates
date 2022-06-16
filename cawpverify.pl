@@ -411,3 +411,19 @@ cawptest2(9,mp*,[[[n,append],2,1%% Modes=2 inputs, 1 output
 ).
 
 **/
+
+/*
+cawptest2(9,append1,[[[n,append],2,1%% Modes=2 inputs, 1 output
+]],3,1,%% MaxPredicates is not the number of predicates in the result, it is the number of non-dictionary predicates in the result.
+7,
+[3],[1],%% Numinputs, Numoutputs tested for
+[
+	[[[[[v,a],["top"]],[[v,b],["middle"]],[[v,c],["bottom"]]],
+		[[[v,d],["top","middle","bottom"]]],true]]
+]
+,
+[],
+[[[n,append1],[[v,a],[v,b],[v,c],[v,d]],":-"	,[[[n,append],[[v,a],[v,b],[v,e]]],[[n,append],[[v,e],[v,c],[v,f]]],[[n,=],[[v,f],[v,d]]]]]]
+
+).
+*/

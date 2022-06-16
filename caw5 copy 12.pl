@@ -327,7 +327,7 @@ New_rule_number1=<MaxPredicates,
 	
 	 %%writeln1([interpret(Debug,Query,Program2,OutputVarList)]),
 	
- %%writeln1(interpret(Debug,Query,Program2,[VarLists])),
+ %writeln1(interpret(Debug,Query,Program2,VarLists)),
 	
 	
 %%([Debug,Query,Program2,[VarLists]]=[off,[[n,add],[[],[1,2],[v,d]]],[[[n,add],[[v,a],[v,c],[v,d]],":-",[[[n,[]],[[v,a]]],[[n,=],[[v,c],[v,d]]]]]],[[[[v,d],[1,2]]]]]->trace;true),
@@ -961,7 +961,22 @@ restlast(Vars1,Rest1,Rest2,Last) :-
 
 
 rule(Program1,RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule) :-
-%%writeln1(rule(Program1,RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule)),
+
+/*
+findall(Rule_vars1,member([_Rule_name,Rule_vars1],Program1),Rule_vars2),foldr(append,Rule_vars2,Rule_vars3),
+
+% count vars
+	sort(Rule_vars3,K),
+	findall(G,(member(G,K),findall(G,member(G,Rule_vars3),H),length(H,J),J>2),L),
+% remove vars occuring more than twice
+%(not(InputVars10=[])->trace;true),
+(var(InputVars10)->InputVars10=InputVars1;subtract(InputVars10,L,InputVars1)),
+(var(VarList0)->VarList0=VarList;subtract(VarList0,L,VarList)),
+%notrace,
+*/
+%trace,
+%writeln1(rule(Program1,RuleName,InModes,OutModes,InputVars1,InputVars2,VarList,VarList2,OutputVars,Rule)),
+%notrace,
 
 rule1(RuleName,InModes,OutModes,InputVars1,InputVars2a,VarList,VarList2a,OutputVars,Rule1),
 ((1 is InModes+OutModes,member(Rule1,Program1))->(InputVars1=[_|InputVars3],rule(Program1,RuleName,InModes,OutModes,InputVars3,InputVars2,VarList,VarList2,OutputVars,Rule2),Rule=Rule2);(%%InputVars1=InputVars3, *** Commented out
