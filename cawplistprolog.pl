@@ -32,8 +32,12 @@
 :- include('../Languages/make_docs.pl').
 :- include('../SSI/find_pred_sm.pl').
 :- include('../listprologinterpreter/e4_fa_get_vals.pl').
-:- include('../listprologinterpreter/equals4_first_args.pl').
+%:- include('../listprologinterpreter/equals4_first_args.pl').
 :- include('../listprologinterpreter/expression_not_var.pl').
 :- include('../listprologinterpreter/collect_arguments.pl').
 :- include('../listprologinterpreter/reserved_words2.pl').
 :- include('../listprologinterpreter/expand_types.pl').
+:- include('../listprologinterpreter/replace_in_term.pl').
+:- include('../listprologinterpreter/preds_converters_and_matrices.pl').
+%:- include('numbers_of_items_correspond.pl').
+:- include('../listprologinterpreter/match_get_put_vals.pl').
