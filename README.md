@@ -19,6 +19,8 @@ Install List Prolog Interpreter Repository (https://github.com/luciangreen/listp
 
 * Optionally, you can install from LPPM by installing <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a> for your machine, downloading the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>,
 ```
+mkdir GitHub
+cd GitHub/
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
 cd List-Prolog-Package-Manager
 swipl
