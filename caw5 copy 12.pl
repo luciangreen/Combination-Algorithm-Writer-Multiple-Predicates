@@ -34,8 +34,8 @@ Notes:
 
 **/
 
-%%:- include('algdict.pl').
-%%:- include('remove_duplicate_predicates.pl').
+%%:-include('algdict.pl').
+%%:-include('remove_duplicate_predicates.pl').
 
 /**caw00a(Debug,PredicateName,Rules1,MaxLength,MaxPredicates,TotalVars,VarLists,Program1,Program2B) :-
 	(caw00(Debug,PredicateName,Rules1,MaxLength,MaxPredicates,TotalVars,VarLists,Program1,Program2B),%%writeln("If error, returned true");(furthest_rule([Number,Rules]),
