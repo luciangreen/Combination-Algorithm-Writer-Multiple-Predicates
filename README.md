@@ -6,6 +6,10 @@ Combination Algorithm Writer with Multiple Predicates (CAWMP) is a SWI-Prolog al
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about CAWMP.  Please use <a href="https://github.com/luciangreen/Combination-Algorithm-Writer-Multiple-Predicates/blob/master/cawmp.bib">this citation</a> for research.
 
+# Deliverable from CAWMP
+
+* CAWMP taught me to find the base case before the second clause in CAW etc.
+
 # Getting Started
 
 Please read the following instructions on how to install the project on your computer for writing code.
@@ -136,4 +140,5 @@ Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Luc
 # License
 
 I licensed this project under the BSD3 License - see the <a href="LICENSE">LICENSE.md</a> file for details
+
 
